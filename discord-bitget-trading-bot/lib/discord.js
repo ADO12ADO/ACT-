@@ -14,13 +14,19 @@ client.on('messageCreate', async (message) => {
     if (message.channel.id === process.env.DISCORD_CHANNEL_ID && !message.author.bot) {
         console.log('Message received:', message.content);
         const { token, entryPrice, invalidationLevel, targetPrices } = parseMessage(message.content);
-        
+
         // Assume we fetch balance from some API, for simplicity let's use a constant value
         const balance = 10000; // Example balance
         await placeOrder(token, entryPrice, invalidationLevel, targetPrices, balance);
     }
 });
 
-client.login(process.env.DISCORD_BOT_TOKEN);
+function startBot() {
+    return client.login(process.env.DISCORD_BOT_TOKEN);
+}
 
-module.exports = client;
+function stopBot() {
+    return client.destroy();
+}
+
+module.exports = { startBot, stopBot, client };
