@@ -1,4 +1,3 @@
-// pages/api/start-bot.js
 import { startBot, client } from '../../lib/discord';
 
 export default function handler(req, res) {
