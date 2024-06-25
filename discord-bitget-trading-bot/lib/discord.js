@@ -1,10 +1,16 @@
-const { Client, Intents } = require('discord.js');
+const { Client, GatewayIntentBits } = require('discord.js');
 const placeOrder = require('./bitget');
 const parseMessage = require('./parser');
 require('dotenv').config();
 
+console.log("Initializing Discord Client...");
+
 const client = new Client({ 
-    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.MESSAGE_CONTENT] 
+    intents: [
+        GatewayIntentBits.Guilds, 
+        GatewayIntentBits.GuildMessages, 
+        GatewayIntentBits.MessageContent
+    ] 
 });
 
 client.once('ready', () => {
@@ -23,11 +29,23 @@ client.on('messageCreate', async (message) => {
 });
 
 function startBot() {
-    return client.login(process.env.DISCORD_BOT_TOKEN);
+    console.log("Starting bot...");
+    return client.login(process.env.DISCORD_BOT_TOKEN)
+        .then(() => console.log("Bot started successfully"))
+        .catch(err => {
+            console.error("Error starting bot:", err);
+            throw err; // Throw the error to be caught in the API handler
+        });
 }
 
 function stopBot() {
-    return client.destroy();
+    console.log("Stopping bot...");
+    return client.destroy()
+        .then(() => console.log("Bot stopped successfully"))
+        .catch(err => {
+            console.error("Error stopping bot:", err);
+            throw err; // Throw the error to be caught in the API handler
+        });
 }
 
 module.exports = { startBot, stopBot, client };
