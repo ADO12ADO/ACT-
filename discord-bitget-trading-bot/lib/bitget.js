@@ -1,4 +1,3 @@
-// lib/bitget.js
 const axios = require('axios');
 require('dotenv').config();
 
