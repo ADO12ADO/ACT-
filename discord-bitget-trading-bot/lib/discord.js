@@ -1,10 +1,11 @@
-// lib/discord.js
-const { Client, GatewayIntentBits } = require('discord.js');
+const { Client, Intents } = require('discord.js');
 const placeOrder = require('./bitget');
 const parseMessage = require('./parser');
 require('dotenv').config();
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
+const client = new Client({ 
+    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.MESSAGE_CONTENT] 
+});
 
 client.once('ready', () => {
     console.log('Discord bot ready!');
