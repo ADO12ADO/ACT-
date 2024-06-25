@@ -1,6 +1,4 @@
-// lib/bitget.js
 const axios = require('axios');
-const { someUtilityFunction } = require('./util'); // Importe utilitas jika diperlukan
 require('dotenv').config();
 
 const instance = axios.create({
