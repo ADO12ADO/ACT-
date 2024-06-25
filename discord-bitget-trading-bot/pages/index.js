@@ -1,4 +1,3 @@
-// pages/index.js
 import { useState } from 'react';
 
 export default function Home() {
@@ -28,10 +27,11 @@ export default function Home() {
 
     return (
         <div>
-            <h1>Discord Bitget Trading Bot</h1>
+                        <h1>Discord Bitget Trading Bot</h1>
             <button onClick={startBot}>Start Bot</button>
             <button onClick={stopBot}>Stop Bot</button>
             <p>Status: {status}</p>
         </div>
     );
 }
+
