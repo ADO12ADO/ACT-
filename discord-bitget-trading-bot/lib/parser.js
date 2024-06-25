@@ -1,5 +1,3 @@
-// lib/parser.js
-
 function parseMessage(message) {
     const lines = message.split('\n');
     const token = lines[0].match(/\$(\w+)/)[1];
