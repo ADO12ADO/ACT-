@@ -1,4 +1,3 @@
-// pages/api/stop-bot.js
 import { stopBot, client } from '../../lib/discord';
 
 export default function handler(req, res) {
